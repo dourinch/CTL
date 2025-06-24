@@ -1,3 +1,7 @@
+:root {
+  --main-orange: #e26b00;
+}
+
 body {
   font-family: sans-serif;
   background-color: #ffffff;
@@ -20,7 +24,7 @@ body {
   position: relative;
   overflow: hidden;
   text-align: center;
-  color: #cc6600;
+  color: var(--main-orange);
 }
 
 .input-field {
@@ -76,19 +80,25 @@ h2, h3 {
 }
 
 #out-nombre-info {
-  margin-bottom: 0.2rem;
-  line-height: 1.1;
-  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
-#out-num {
-  margin-top: 0.6rem;
-  font-size: 1.25rem;
+#out-nombre-info .nombre,
+#out-nombre-info .info {
+  font-size: 1.2rem;
+  display: block;
 }
 
-/* Si es iOS, aumentar tamaño de #out-num */
-.ios #out-num {
-  font-size: 1.5rem;
+#out-nombre-info .num {
+  font-size: 1.2rem;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+/* Más grande en iOS */
+.ios #out-nombre-info .num {
+  font-size: 1.4rem;
 }
 
 .moving-bar {
@@ -96,7 +106,7 @@ h2, h3 {
   left: 0;
   width: 100%;
   height: 9px;
-  background-color: #cc6600;
+  background-color: var(--main-orange);
   animation: moveUpDown 6s infinite ease-in-out;
   z-index: 1;
 }
@@ -121,9 +131,10 @@ h2, h3 {
 button {
   margin-top: 1.5rem;
   padding: 0.6rem 1.2rem;
-  background-color: #cc6600;
+  background-color: var(--main-orange);
   color: white;
   border: none;
   cursor: pointer;
   font-size: 1rem;
 }
+
