@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>CTL</title>
   <script>
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const isAndroid = /Android/.test(navigator.userAgent);
-
-  if (isIOS) {
-    document.body.classList.add("ios");
-  } else if (isAndroid) {
-    document.body.classList.add("android");
-  }
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isAndroid = /Android/.test(navigator.userAgent);
+    if (isIOS) {
+      document.body?.classList?.add("ios");
+    } else if (isAndroid) {
+      document.body?.classList?.add("android");
+    }
   </script>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ff7a00" />
@@ -26,6 +25,7 @@
 <body>
   <div class="card">
     <img id="img1" class="image-box" src="logo.png" alt="Foto 1" />
+
     <div id="inputs-container">
       <div class="input-field">
         <input type="text" id="nombre" placeholder="Apellidos" />
@@ -34,7 +34,7 @@
         <input type="text" id="info" placeholder="Nombres" />
       </div>
       <div class="input-field">
-        <input type="text" id="numero" placeholder="Codigo" />
+        <input type="text" id="numero" placeholder="Código" />
       </div>
       <div class="input-field">
         <label>Foto inferior:</label>
@@ -53,16 +53,17 @@
 
   <script>
     const nombreInput = document.getElementById("nombre");
-    const numeroInput = document.getElementById("numero");
-    const outNum = document.getElementById("out-num");
     const infoInput = document.getElementById("info");
+    const numeroInput = document.getElementById("numero");
+    const outNombreInfo = document.getElementById("out-nombre-info");
+    const outNum = document.getElementById("out-num");
     const confirmarBtn = document.getElementById("confirmar");
     const inputsContainer = document.getElementById("inputs-container");
 
     function actualizarNombreInfo() {
-    const nombre = nombreInput.value.toUpperCase();
-    const info = infoInput.value.toUpperCase();
-    document.getElementById("out-nombre-info").innerHTML = `${nombre}<br>${info}`;
+      const nombre = nombreInput.value.toUpperCase();
+      const info = infoInput.value.toUpperCase();
+      outNombreInfo.innerHTML = `${nombre}<br>${info}`;
     }
 
     nombreInput.addEventListener("input", actualizarNombreInfo);
@@ -72,22 +73,21 @@
       outNum.textContent = numeroInput.value.toUpperCase();
     });
 
-
-    function loadImage(input, targetId) {
-      const file = input.files[0];
+    document.getElementById("foto2").addEventListener("change", function () {
+      const file = this.files[0];
       const reader = new FileReader();
-      reader.onload = function(e) {
-        const img = document.getElementById(targetId);
+      reader.onload = function (e) {
+        const img = document.getElementById("img2");
         img.src = e.target.result;
         img.style.display = "block";
       };
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    }
+      if (file) reader.readAsDataURL(file);
+    });
 
-    document.getElementById("foto2").addEventListener("change", function () {
-      loadImage(this, "img2");
+    confirmarBtn.addEventListener("click", () => {
+      if (nombreInput.value && infoInput.value && numeroInput.value) {
+        inputsContainer.classList.add("hidden");
+      }
     });
 
     function generarBarras() {
@@ -97,19 +97,11 @@
       for (let i = 0; i < numBars; i++) {
         const bar = document.createElement("div");
         bar.className = "bar";
-        const randomWidth = 2 + Math.floor(Math.random() * 6);
-        bar.style.width = `${randomWidth}px`;
-        const spacing = Math.random() * 4.5;
-        bar.style.margin = `0 ${spacing.toFixed(1)}px`;
+        bar.style.width = `${2 + Math.floor(Math.random() * 6)}px`;
+        bar.style.margin = `0 ${(Math.random() * 4.5).toFixed(1)}px`;
         barcode.appendChild(bar);
       }
     }
-
-    confirmarBtn.addEventListener("click", () => {
-      if (nombreInput.value && infoInput.value && numeroInput.value) {
-        inputsContainer.classList.add("hidden");
-    }
-    });
 
     generarBarras();
   </script>
