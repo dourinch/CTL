@@ -43,7 +43,7 @@ input[type="file"] {
   display: block;
   width: 28%;
   height: auto;
-  margin: 0 auto 0.05rem auto;
+  margin: 0 auto 0 !important;
   position: relative;
   z-index: 10;
 }
@@ -80,7 +80,7 @@ h2, h3 {
 }
 
 #out-nombre-info {
-  margin-top: 0.5rem;
+  margin-top: 0 !important;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
