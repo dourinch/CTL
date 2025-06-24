@@ -20,7 +20,7 @@ body {
   position: relative;
   overflow: hidden;
   text-align: center;
-  color: #ff7a00;
+  color: #cc6600;
 }
 
 .input-field {
@@ -69,15 +69,26 @@ input[type="file"] {
   height: 58px;
 }
 
-h3 {
+h2, h3 {
   font-size: 1.25rem;
   font-weight: 500;
   margin: 2.5rem 0;
 }
 
 #out-nombre-info {
-  margin: 0.4rem 0;
-  line-height: 1.2;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+  font-size: 1.25rem;
+}
+
+#out-num {
+  margin-top: 0.6rem;
+  font-size: 1.25rem;
+}
+
+/* Si es iOS, aumentar tamaño de #out-num */
+.ios #out-num {
+  font-size: 1.5rem;
 }
 
 .moving-bar {
@@ -85,7 +96,7 @@ h3 {
   left: 0;
   width: 100%;
   height: 9px;
-  background-color: #ff7a00;
+  background-color: #cc6600;
   animation: moveUpDown 6s infinite ease-in-out;
   z-index: 1;
 }
@@ -110,10 +121,9 @@ h3 {
 button {
   margin-top: 1.5rem;
   padding: 0.6rem 1.2rem;
-  background-color: #ff7a00;
+  background-color: #cc6600;
   color: white;
   border: none;
   cursor: pointer;
   font-size: 1rem;
 }
-
