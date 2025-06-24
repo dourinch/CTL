@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>CTL</title>
+  <script>
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isAndroid = /Android/.test(navigator.userAgent);
+
+  if (isIOS) {
+    document.body.classList.add("ios");
+  } else if (isAndroid) {
+    document.body.classList.add("android");
+  }
+  </script>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ff7a00" />
   <script>
@@ -17,7 +27,10 @@
   <div class="card">
     <div id="inputs-container">
       <div class="input-field">
-        <input type="text" id="nombre" placeholder="Apellidos y nombres" />
+        <input type="text" id="nombre" placeholder="Apellidos" />
+      </div>
+      <div class="input-field">
+        <input type="text" id="info" placeholder="Nombres" />
       </div>
       <div class="input-field">
         <input type="text" id="numero" placeholder="Codigo" />
@@ -32,6 +45,7 @@
     <img id="img1" class="image-box" src="logo.png" alt="Foto 1" />
     <h2 id="out-nombre">NOMBRE</h2>
     <p id="out-num">NUM</p>
+    <p id="out-info">APELLIDO</p>
     <img id="img2" class="image-box" src="" alt="Foto 2" />
     <h3>ALUMNO</h3>
     <div class="barcode" id="barcode"></div>
@@ -43,6 +57,8 @@
     const numeroInput = document.getElementById("numero");
     const outNombre = document.getElementById("out-nombre");
     const outNum = document.getElementById("out-num");
+    const infoInput = document.getElementById("info");
+    const outInfo = document.getElementById("out-info");
     const confirmarBtn = document.getElementById("confirmar");
     const inputsContainer = document.getElementById("inputs-container");
 
@@ -52,6 +68,10 @@
 
     numeroInput.addEventListener("input", () => {
       outNum.textContent = numeroInput.value.toUpperCase();
+    });
+
+    infoInput.addEventListener("input", () => {
+    outInfo.textContent = infoInput.value.toUpperCase();
     });
 
     function loadImage(input, targetId) {
