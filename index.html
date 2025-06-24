@@ -4,13 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>CTL</title>
-
-  <!-- iOS: status bar blanca -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
-  <!-- Color general -->
-  <meta name="theme-color" content="#cc6600" />
+  <meta name="theme-color" content="#e26b00" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
 
@@ -22,6 +16,20 @@
     } else if (isAndroid) {
       document.documentElement.classList.add("android");
     }
+  </script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/CTL/service-worker.js");
+    }
+
+    // Cambiar theme color si es iOS
+    window.addEventListener("DOMContentLoaded", () => {
+      if (document.documentElement.classList.contains("ios")) {
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", "#ffffff");
+      }
+    });
   </script>
 </head>
 <body>
@@ -45,8 +53,12 @@
       <button id="confirmar">Confirmar</button>
     </div>
 
-    <p id="out-nombre-info">NOMBRE<br>INFO</p>
-    <p id="out-num">NUM</p>
+    <p id="out-nombre-info">
+      <span class="nombre">NOMBRE</span><br>
+      <span class="info">INFO</span><br>
+      <span class="num">NUM</span>
+    </p>
+
     <img id="img2" class="image-box" src="" alt="Foto 2" />
     <h3>ALUMNO</h3>
     <div class="barcode" id="barcode"></div>
@@ -58,22 +70,22 @@
     const infoInput = document.getElementById("info");
     const numeroInput = document.getElementById("numero");
     const outNombreInfo = document.getElementById("out-nombre-info");
-    const outNum = document.getElementById("out-num");
     const confirmarBtn = document.getElementById("confirmar");
     const inputsContainer = document.getElementById("inputs-container");
 
     function actualizarNombreInfo() {
       const nombre = nombreInput.value.toUpperCase();
       const info = infoInput.value.toUpperCase();
-      outNombreInfo.innerHTML = `${nombre}<br>${info}`;
+      const numero = numeroInput.value.toUpperCase();
+      outNombreInfo.innerHTML = `
+        <span class="nombre">${nombre}</span><br>
+        <span class="info">${info}</span><br>
+        <span class="num">${numero}</span>`;
     }
 
     nombreInput.addEventListener("input", actualizarNombreInfo);
     infoInput.addEventListener("input", actualizarNombreInfo);
-
-    numeroInput.addEventListener("input", () => {
-      outNum.textContent = numeroInput.value.toUpperCase();
-    });
+    numeroInput.addEventListener("input", actualizarNombreInfo);
 
     document.getElementById("foto2").addEventListener("change", function () {
       const file = this.files[0];
@@ -109,3 +121,4 @@
   </script>
 </body>
 </html>
+
