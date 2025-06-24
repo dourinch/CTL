@@ -77,11 +77,11 @@ h2, p, h3 {
 
 #out-nombre-info {
   margin-bottom: 0.2rem;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 #out-num {
-  margin-top: 0.2rem !important;
+  margin-top: 1.2rem;
 }
 
 .moving-bar {
