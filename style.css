@@ -69,20 +69,15 @@ input[type="file"] {
   height: 58px;
 }
 
-h2, h3 {
+h3 {
   font-size: 1.25rem;
   font-weight: 500;
   margin: 2.5rem 0;
 }
 
-/* ESPACIADO AJUSTADO */
 #out-nombre-info {
-  margin-bottom: 0.3rem;
-  line-height: 1.1;
-}
-
-#out-num {
-  margin-top: 0.45rem; /* 1.5 veces más que 0.3rem de arriba */
+  margin: 0.4rem 0;
+  line-height: 1.2;
 }
 
 .moving-bar {
@@ -121,3 +116,4 @@ button {
   cursor: pointer;
   font-size: 1rem;
 }
+
