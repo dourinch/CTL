@@ -43,8 +43,8 @@
       <button id="confirmar">Confirmar</button>
     </div>
 
-    <p id="out-nombre-info">NOMBRE<br>INFO</p>
-    <p id="out-num">NUM</p>
+    <p id="out-nombre-info">NOMBRE<br>INFO<br>NUM</p>
+
     <img id="img2" class="image-box" src="" alt="Foto 2" />
     <h3>ALUMNO</h3>
     <div class="barcode" id="barcode"></div>
@@ -56,22 +56,19 @@
     const infoInput = document.getElementById("info");
     const numeroInput = document.getElementById("numero");
     const outNombreInfo = document.getElementById("out-nombre-info");
-    const outNum = document.getElementById("out-num");
     const confirmarBtn = document.getElementById("confirmar");
     const inputsContainer = document.getElementById("inputs-container");
 
     function actualizarNombreInfo() {
       const nombre = nombreInput.value.toUpperCase();
       const info = infoInput.value.toUpperCase();
-      outNombreInfo.innerHTML = `${nombre}<br>${info}`;
+      const num = numeroInput.value.toUpperCase();
+      outNombreInfo.innerHTML = `${nombre}<br>${info}<br>${num}`;
     }
 
     nombreInput.addEventListener("input", actualizarNombreInfo);
     infoInput.addEventListener("input", actualizarNombreInfo);
-
-    numeroInput.addEventListener("input", () => {
-      outNum.textContent = numeroInput.value.toUpperCase();
-    });
+    numeroInput.addEventListener("input", actualizarNombreInfo);
 
     document.getElementById("foto2").addEventListener("change", function () {
       const file = this.files[0];
