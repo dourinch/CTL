@@ -10,16 +10,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  overflow: hidden;
-  transform: scale(1.12);
-  transform-origin: center center;
+  height: auto;
   margin-top: 10px;
+  overflow: auto;
 }
 
 .card {
   padding: 2.5rem;
-  width: 380px;
+  width: 100%;
+  max-width: 380px;
   background-color: white;
   position: relative;
   overflow: hidden;
