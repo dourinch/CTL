@@ -9,27 +9,9 @@
   <link rel="stylesheet" href="style.css" />
 
   <script>
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isAndroid = /Android/.test(navigator.userAgent);
-    if (isIOS) {
-      document.documentElement.classList.add("ios");
-    } else if (isAndroid) {
-      document.documentElement.classList.add("android");
-    }
-  </script>
-
-  <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/CTL/service-worker.js");
     }
-
-    // Cambiar theme color si es iOS
-    window.addEventListener("DOMContentLoaded", () => {
-      if (document.documentElement.classList.contains("ios")) {
-        const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", "#ffffff");
-      }
-    });
   </script>
 </head>
 <body>
