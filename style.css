@@ -97,10 +97,6 @@ h2, h3 {
   margin-top: 0.3rem;
 }
 
-/* Más grande en iOS */
-.ios #out-nombre-info .num {
-  font-size: 1.4rem;
-}
 
 .moving-bar {
   position: absolute;
